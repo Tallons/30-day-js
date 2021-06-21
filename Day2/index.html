@@ -21,21 +21,38 @@
         const minuteHand = document.querySelector(".minute-hand");
         const hourHand = document.querySelector(".hour-hand");
         const hand = document.querySelector(".hand");
+        let _minutes = 0;
+        let _hours = 0;
 
         setDate = () => {
             const now = new Date();
             const seconds = now.getSeconds();
             const minutes = now.getMinutes();
             const hours = now.getHours();
+
+            const secondsDegrees = getRotationDegrees(seconds, 60);
+            setRotation(secondHand, secondsDegrees);
+
+            if (minutes !== _minutes) {
+                const minutesDegrees = getRotationDegrees(minutes, 60);
+                setRotation(minuteHand, minutesDegrees)
+            };
+
+            if (hours !==_hours) {
+                const hoursDegrees = getRotationDegrees(hours, 12);
+                setRotation(hourHand, hoursDegrees)
+            };
             
-            const secondsDegrees = (seconds / 60 * 360) + 90;
-            const minutesDegrees = (minutes / 60 * 360) + 90;
-            const hoursDegrees = (hours / 12 * 360) + 90;
+            _minutes = minutes;
+            _hours = hours;
+        };
 
-            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-            minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
-            hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        function getRotationDegrees(numberOfUnits, unitDivisor){
+            return numberOfUnits / unitDivisor * 360 + 90;
+        };
 
+        function setRotation(element,degrees){
+            element.style.transform = `rotate(${degrees}deg)`;
         };
 
         setInterval(setDate, 1000);
