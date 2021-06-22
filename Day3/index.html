@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Scoped CSS Variables and JS</title>
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+    <body class="">
+        <h2> Update CSS Variables with <span class="hl">JS</span></h2>
+
+        <div class="controls">
+            <div class="mode-container">
+                <label class="switch">
+                    <input type="checkbox" checked >
+                    <span class="slider round"></span>
+                </label>
+                <span>Dark Mode</span>
+            </div>
+            <label for="spacing">Spacing:</label>
+            <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+            <label for="blur">Blur:</label>
+            <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+            <label for="contrast-color">Base Color: </label>
+            <input type="color" name="contrast-color" value="#3D0066">
+        </div>
+        <img src="./Naofumi.jpg">
+
+    </body>
+    <script>
+        const inputs = document.querySelectorAll(".controls input");
+        
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || "";
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+        
+        inputs.forEach(input => input.addEventListener("change", handleUpdate));
+        inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+        
+        </script>
+    <script>
+        const darkMode = document.querySelector(".switch input");
+
+        function toggleDarkMode(){
+
+            const element = document.getElementsByTagName("body");
+            this.checked ? element[0].classList.remove("light-mode") : element[0].classList.add("light-mode");
+
+        }
+
+        darkMode.addEventListener("click", toggleDarkMode);
+    </script>
+</html>
