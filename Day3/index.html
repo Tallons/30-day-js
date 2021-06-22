@@ -43,10 +43,8 @@
         const darkMode = document.querySelector(".switch input");
 
         function toggleDarkMode(){
-
             const element = document.getElementsByTagName("body");
-            this.checked ? element[0].classList.remove("light-mode") : element[0].classList.add("light-mode");
-
+            element[0].classList.toggle("light-mode");
         }
 
         darkMode.addEventListener("click", toggleDarkMode);
