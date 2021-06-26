@@ -1,0 +1,65 @@
+html {
+    box-sizing: border-box;
+    background: #fdecb0;
+    font-family: "helvetica neue";
+    font-size: 20px;
+    font-weight: 200;
+}
+
+*, *:before, *:after {
+    box-sizing:inherit;
+}
+
+input {
+    width:100%;
+    padding:20px;
+}
+
+.search-form {
+    max-width: 400px;
+    margin:50px auto;
+}
+
+input.search {
+    margin:0;
+    text-align: center;
+    outline: 0;
+    border: 10px solid #c9dddd;
+    /* width: 120%; */
+    /* left: -10%; */
+    /* position: relative; */
+    top: 10px;
+    z-index: 1;
+    border-radius: 5px;
+    font-size: 40px;
+    box-shadow: 
+        0 0 5px rgba(0, 0, 0, 0.12),
+        inset 0 0 10px rgba(0, 0, 0, 0.19);
+}
+
+.suggestions {
+    margin: 0;
+    padding: 0;
+    /* position: relative; */
+}
+
+.suggestions li {
+    background-color: white;
+    list-style: none;
+}
+
+.suggestions li:nth-child(even) {
+    transform: perspective(100px) rotateX(3deg) translateY(2px);
+    background: linear-gradient(to bottom, #FFFFFF 0%, #EFEFEF 100%);
+}
+.suggestions li:nth-child(odd) {
+    transform: perspective(100px) rotateX(-3deg) translateY(2px);
+    background: linear-gradient(to bottom, #FFFFFF 0%, #EFEFEF 100%);
+}
+span.population {
+    font-size:15px;
+}
+
+.hl {
+    background-color: cornflowerblue;
+}
