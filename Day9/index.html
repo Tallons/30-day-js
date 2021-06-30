@@ -17,28 +17,54 @@
         }
 
         // Regular Console log
-
+            console.log("hello");
         // Interpolated
-
+            console.log("Book title: %s", wizards[0].book);
+            console.log(`Example ${wizards[0].book}`);
         // Styled
-
+            console.log("%c Testing", "font-size:30px; background:purple; text-shadow 5px 5px 0 black;");
         // Warning
-
+            console.warn("Warning");
         // Error 
-
+            console.error("Error");
         // Info
-
+            console.info("Variable is positive");
         //Testing
-
+            console.assert(1 === 2, "Incorrect!")
+            const p = document.querySelector("p");
+            console.assert(p.classList.contains("subtitle"), "Doesnt contain subtitle class");
         // Clearing
-
+            // console.clear();
         // Viewing DOM Elements
+            console.log(p);
+            console.dir(p);
 
         // Grouping
-
+            wizards.forEach(wizard => {
+                console.groupCollapsed(`${wizard.name}`);
+                console.log(`${wizard.name} is a Wizard`);
+                console.log(`He is from ${wizard.book}`);
+                console.groupEnd(`${wizard.name}`);
+            });
         // counting
+                console.count("Noah");
+                console.count("Andrew");
+                console.count("Maggie");
+                console.count("Maggie");
+                console.count("Noah");
+                console.count("Matt");
+                console.count("Noah");
 
         //timing
+            console.time("Data Fetch");
+            fetch("https://api.github.com/users/tallons")
+            .then(data => data.json())
+            .then(data => {
+                console.timeEnd("Data Fetch");
+                console.log(data);
+            })
 
+        // tables
+        console.table(wizards);
     </script>
 </html>
